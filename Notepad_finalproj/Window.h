@@ -13,6 +13,7 @@ public:
 
 enum
 {
+	// IDs for identifying each button on the toolbar that wxWidgets doesn't provide an ID for
 	ID_FULLSCREEN = wxID_HIGHEST + 1,
 	ID_NEW_NOTE,
 	ID_IMPORT
@@ -21,7 +22,8 @@ enum
 class Frame : public wxFrame
 {
 private:
-
+	// The essential members for functionality
+	// The text control allows for writing, the tool bar holds the tools.
 	wxTextCtrl* m_pTextCtrl;
 	wxToolBar* m_pToolBar;
 

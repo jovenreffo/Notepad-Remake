@@ -25,6 +25,7 @@ Frame::Frame()
 
 Frame::~Frame()
 {
+	// Unbind the events to preserve resources
 	m_pToolBar->Unbind(wxEVT_TOOL, &Frame::OnCut, this, wxID_CUT);
 	m_pToolBar->Unbind(wxEVT_TOOL, &Frame::OnCopy, this, wxID_COPY);
 	m_pToolBar->Unbind(wxEVT_TOOL, &Frame::OnPaste, this, wxID_PASTE);
@@ -56,7 +57,7 @@ void Frame::SetupTools()
 	m_pToolBar = new wxToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_TEXT);
 #endif
 	
-	// Initialize bitmaps
+	// Initialize bitmaps by navigating to the program path, and specifying it as a PNG, otherwise an error is thrown
 	m_copy = wxBitmap(path_data::dataDir + "\\copy_small.png", wxBITMAP_TYPE_PNG);
 	m_cut = wxBitmap(path_data::dataDir + "\\cut_small.png", wxBITMAP_TYPE_PNG);
 	m_paste = wxBitmap(path_data::dataDir + "\\paste_small.png", wxBITMAP_TYPE_PNG);
